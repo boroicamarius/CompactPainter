@@ -193,6 +193,13 @@ void show_pointer(queue<pixel>& q, double x, double y) {
         SetPixel(consoleDC, x + (5 * cos(i * pi / 180)), y + (5 * sin(i * pi / 180)), RGB(255, 255, 255));
     }
 }
+void color_indicator(COLORREF color) {
+    for (int d = 0; d < 360; d++) {
+        for (int r = 0; r <= 11; r++) {
+            SetPixel(consoleDC, 1450 + (r * cos(d * pi / 180)), 156 + (r * sin(d * pi / 180)), color);
+        }
+    }
+}
 void brush_type(int x, int y) {
     if (brush_t == "paint_brush") {
         _brush(x, y, RGB(r / 100 * shade_value, g / 100 * shade_value, b / 100 * shade_value));
@@ -260,13 +267,6 @@ void display_color_palette(int pos_x, int pos_y) {
 void draw(int x, int y) {
     brush_type(x, y);
 };
-void color_indicator(COLORREF color) {
-    for (int d = 0; d < 360; d++) {
-        for (int r = 0; r <= 11; r++) {
-            SetPixel(consoleDC, 1450 + (r * cos(d * pi / 180)), 156 + (r * sin(d * pi / 180)), color);
-        }
-    }
-}
 void ColorPaletteUI(COLORREF body, COLORREF bezels) {
     int origin_x = 1375, origin_y = 85;
     /// COLOR RGB(0, 0, 13)
