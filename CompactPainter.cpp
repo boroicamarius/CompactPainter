@@ -229,6 +229,7 @@ void brush_type(int x, int y) {
         set_indicator(g_p, 1305 + (g / 1.7), 239);
         clear_pattern(b_p);
         set_indicator(b_p, 1305 + (b / 1.7), 269);
+        color_indicator(RGB(r / 100 * shade_value, g / 100 * shade_value, b / 100 * shade_value));
     }
 }
 void display_color_palette(int pos_x, int pos_y) {
