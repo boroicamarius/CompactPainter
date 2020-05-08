@@ -117,7 +117,8 @@ int _bucket(int f_x, int f_y, COLORREF start_color, BOOL LIMIT) {
 }
 void _pen(int x, int y, COLORREF color) {
     for (int i = -pen.size; i <= pen.size; i++) {
-        SetPixel(consoleDC, x + (i * cos(pen.orientation * pi / 180)), y + (i * sin(pen.orientation * pi / 180)), color);
+        if (limit(x + (i * cos(pen.orientation * pi / 180)), y + (i * sin(pen.orientation * pi / 180))))
+            SetPixel(consoleDC, x + (i * cos(pen.orientation * pi / 180)), y + (i * sin(pen.orientation * pi / 180)), color);
     }
 }
 void _line(double x1, double y1, double x2, double y2, COLORREF color) {
